@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/search', function () {
+    return view('welcome');
+});
+
+Route::get('/eatspot/:id', function () {
+    return view('welcome');
+});
