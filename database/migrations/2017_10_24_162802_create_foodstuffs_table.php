@@ -15,10 +15,15 @@ class CreateFoodstuffsTable extends Migration
     {
         Schema::create('foodstuffs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('description');
+            $table->integer('eatspot_id')->unsigned();
             $table->nullableMorphs('taggable');
             $table->timestamps();
+            
+            $table->foreign('eatspot_id')
+            ->references('id')->on('eatspots')
+            ->onDelete('cascade');            
         });
     }
 
