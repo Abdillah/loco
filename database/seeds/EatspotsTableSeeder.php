@@ -18,5 +18,24 @@ class EatspotsTableSeeder extends Seeder
                 $es->foodstuffs()->save($foodstuff);
             }
         });
+
+        $eatspots = [
+            [
+                'name' => 'nnnnn',
+                'description' => $faker->text(30),
+                'latitude'  => $faker->latitude(),
+                'longitude' => $faker->longitude(),
+                'rating' => 5,
+                'taggable_type' => str_random(10),
+            ],
+            [
+                'name' => $faker->name,
+                'description' => $faker->text(30),
+                'latitude'  => $faker->latitude(),
+                'longitude' => $faker->longitude(),
+                'rating' => 5,
+                'taggable_type' => str_random(10),
+            ],        
+        ];
     }
 }
