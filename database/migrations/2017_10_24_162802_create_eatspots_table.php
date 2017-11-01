@@ -19,6 +19,7 @@ class CreateEatspotsTable extends Migration
             $table->string('description');
             $table->double('latitude', 15, 10);
             $table->double('longitude', 15, 10);
+            $table->double('rating');
             $table->nullableMorphs('taggable');
             $table->timestamps();
         });
