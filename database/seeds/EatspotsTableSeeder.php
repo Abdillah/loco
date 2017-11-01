@@ -11,13 +11,13 @@ class EatspotsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\Eatspot::class, 50)->create()->each(function($es) {
-            // For each Eatspot we create some Foodstuff
-            $foodstuffs = factory(App\Models\Foodstuff::class, rand(4, 10))->make();
-            foreach ($foodstuffs as $key => $foodstuff) {
-                $es->foodstuffs()->save($foodstuff);
-            }
-        });
+        // factory(App\Models\Eatspot::class, 50)->create()->each(function($es) {
+        //     // For each Eatspot we create some Foodstuff
+        //     $foodstuffs = factory(App\Models\Foodstuff::class, rand(4, 10))->make();
+        //     foreach ($foodstuffs as $key => $foodstuff) {
+        //         $es->foodstuffs()->save($foodstuff);
+        //     }
+        // });
 
         $eatspots = [
             [
@@ -35,7 +35,7 @@ class EatspotsTableSeeder extends Seeder
                 'longitude' => 110.377401,
                 'rating' => 4.5,
                 'taggable_type' =>'Burjo, magelangan, orak-arik, warmindo',
-            ],   
+            ],
             [
                 'name' =>'Angkringan Koboy',
                 'description' =>'Angkringan mantap, murah, porsi banyak. Jl. Kaliurang KM.5 No.16, 55281, Caturtunggal, Depok Sub-District, Sleman Regency, Special Region of Yogyakarta 55284',
@@ -43,7 +43,7 @@ class EatspotsTableSeeder extends Seeder
                 'longitude' => 110.380519,
                 'rating' => 4.7,
                 'taggable_type' =>'Angkringan',
-            ], 
+            ],
             [
                 'name' =>'Angkringan Pak Panut',
                 'description' =>'Angkringan murah, aneka sate. Pasar Klebengan. Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281',
@@ -51,7 +51,7 @@ class EatspotsTableSeeder extends Seeder
                 'longitude' => 110.386273,
                 'rating' => 4.3,
                 'taggable_type' =>'Angkringan',
-            ],    
+            ],
             [
                 'name' =>'Warung Makan Mas Pri',
                 'description' =>'Ayam Tepung Bakar, murah, enak, sambal sepuasnya. Jl. Selokan Mataram, Sinduadi, Mlati, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55284',
@@ -95,11 +95,16 @@ class EatspotsTableSeeder extends Seeder
             [
                 'name' =>'Preksu',
                 'description' =>'Warung makan geprek dan susu. Jalan Pandega Marta No. 181, Sinduadi, Mlati, Sinduadi, Mlati, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281',
-                'latitude'  => -7.756466, 
+                'latitude'  => -7.756466,
                 'longitude' => 110.373953,
                 'rating' => 4.1,
                 'taggable_type' =>'Geprek',
             ],
         ];
+
+        foreach ($eatspots as $i => $eatspot) {
+            $eatspotModel = new App\Models\Eatspot($eatspot);
+            $eatspotModel->save();
+        }
     }
 }
