@@ -163,11 +163,12 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Skydiver\LaravelMaterializeCSS\MaterializeCSSServiceProvider::class,
-        MaterialIcons\MaterialIconsBridgeServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
+        Skydiver\LaravelMaterializeCSS\MaterializeCSSServiceProvider::class,
+        MaterialIcons\MaterialIconsBridgeServiceProvider::class,
 
         /*
          * Application Service Providers...
