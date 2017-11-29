@@ -24,12 +24,12 @@
             <div class="card" style="margin-top: 20px">
                 <div class="card-image">
                     <img style="max-height: 250px;" src="images/sample-1.jpg" />
-                    <span class="card-title">Card Title</span>
+                    <span class="card-title">{{ $eatspot->name }}</span>
                 </div>
                 <div class="card-content">
-                    <h1 style="font-size: 2em; font-family: 'Raleway', sans-serif;">
+                    {{-- <h1 style="font-size: 2em; font-family: 'Raleway', sans-serif;">
                         {{ $eatspot->name }}
-                    </h1>
+                    </h1> --}}
                     <p>
                         {{ $eatspot->description }}
                     </p>
