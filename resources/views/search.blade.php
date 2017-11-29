@@ -42,31 +42,42 @@
             <div class="row">
                 <!-- Filter -->
                 <div class="col s12">
-                    <div class="input-field col s5">
-                        <div class="title-label"><center>Mode</center></div>
-                        <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-                            <div class="btn-group" role="group" aria-label="First group">
-                                <a href="/search?mode=price" class="btn btn-small {{ (!isset($searchMode) || $searchMode === 'price')? 'active' : '' }}">Bokek</a>
-                                <a href="/search?mode=location" class="btn btn-small {{ isset($searchMode) && $searchMode === 'location'? 'active' : '' }}">Mager</a>
-                                <a href="/search?mode=relevance" class="btn btn-small {{ isset($searchMode) && $searchMode === 'relevance'? 'active' : '' }}">Ngidam</a>
+                    <div class="row">
+                        <div class="col s5 offset-s1">
+                            <div class="title-label"><center>Mode</center></div>
+                            <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+                                <div class="btn-group" role="group" aria-label="First group">
+                                    <a href="/search?mode=relevance" class="btn btn-small {{ isset($searchMode) && $searchMode === 'relevance'? 'active' : '' }}">Ngidam</a>
+                                    <a href="/search?mode=price" class="btn btn-small {{ (!isset($searchMode) || $searchMode === 'price')? 'active' : '' }}">Bokek</a>
+                                    <a href="/search?mode=location" class="btn btn-small {{ isset($searchMode) && $searchMode === 'location'? 'active' : '' }}">Mager</a>
+                                </div>
                             </div>
+                            <input type="hidden" name="mode" value="{{ $searchMode ?: 'relevance' }}">
+                        </div>
+                        <div class="col s5">
+                            @if (!isset($searchMode) || $searchMode === 'price')
+                                <div class="title-label"><center>Bokek meter</center></div>
+                                <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+                                    <input type="text" id="price-range" name="price-range" value="" />
+                                </div>
+                            @elseif (!isset($searchMode) || $searchMode === 'location')
+                                <div class="title-label"><center><i class="material-icons">place</i> Mager checkpoint</center></div>
+                                <div class="panel-location mb-3" role="toolbar" aria-label="Toolbar with button groups">
+                                    <div id="user-location">Locating... (we need your location)</div> (<a id="change-user-location" href="#">Change</a>)
+                                    <input type="hidden" id="lat" name="lat" value="" />
+                                    <input type="hidden" id="lon" name="lon" value="" />
+                                </div>
+                            @endif
                         </div>
                     </div>
-                    <div class="col s6 offset-s1">
-                        <!-- price range -->
-                        <div class="title-label"><center>Rentang harga</center></div>
-                        <div class="input-slider" style="padding-top: 40px;">
-                            <input type="hidden" name="low" id="low">
-                            <input type="hidden" name="high" id="high">
-                            <div id="price-slider"></div>
-                        </div>
-                    </div>
-                    <div class="col s12">
-                        <div class="filter">
-                            <br>
-                            <button class="btn waves-effect waves-light " type="submit">Saring
-                                <i class="material-icons left">filter_list</i>
-                            </button>
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="filter">
+                                <br>
+                                <button class="btn waves-effect waves-light " type="submit">Saring
+                                    <i class="material-icons left">filter_list</i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -123,7 +134,11 @@
             if (location === null || location['state'] !== 'success') {
                 askLocationAndAddress().then(function(location) {
                     replaceUserLocation(location['lat'], location['lon']);
+                    $('#user-location').text(location['addr']);
                 });
+            } else {
+                replaceUserLocation(location['lat'], location['lon']);
+                $('#user-location').text(location['addr']);
             }
         })
     </script>
