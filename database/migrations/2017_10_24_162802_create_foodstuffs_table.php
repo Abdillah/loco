@@ -17,6 +17,7 @@ class CreateFoodstuffsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('description');
+            $table->string('rating');
             $table->string('price');
             $table->integer('eatspot_id')->unsigned();
             $table->nullableMorphs('taggable');
