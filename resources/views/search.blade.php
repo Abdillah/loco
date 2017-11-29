@@ -14,62 +14,63 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="{{ asset('css/nouislider.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/component-search.css') }}">
     <link rel="stylesheet" href="{{ asset('css/search.css') }}">
 </head>
 <body>
     <div class="container">
-        <!-- Logo and search bar -->
-        <div class="row card-panel green lighten-3">
-            <form action="/search" method="GET" id="cari">
+        <form action="/search" method="GET" id="cari">
+            <!-- Logo and search bar -->
+            <div class="row">
                 <div class="col s12">
-                    <div class="col s2 logo">
-                        <img src="https://cldup.com/qxy65mfeGo.png" width="75px" height="75px" alt="logo">
-                        Locohunter
-                    </div>
-                    <div class="col offset-s1 s9">
-                        <div class="row" style="margin-top: 30px;">
-                            <div class="col s12 search-wrapper card input-field">
-                                <input id="search" class="autocomplete" placeholder="Cari obat laparmu.." value="{{ $query }}" autocomplete="off"><i class="material-icons btn-search">search</i>
+                    <div class="col s12">
+                        <div class="col s2 logo">
+                            <img src="https://cldup.com/qxy65mfeGo.png" width="75px" height="75px" alt="logo">
+                            Locohunter
+                        </div>
+                        <div class="col offset-s1 s9">
+                            <div class="row" style="margin-top: 30px;">
+                                <div class="col s12 search-wrapper card input-field">
+                                    <input id="search" name="q" class="autocomplete" placeholder="Cari obat laparmu.." value="{{ $query }}" autocomplete="off"><i class="material-icons btn-search">search</i>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col s1"></div>
             </div>
-
-            <!-- Filter -->
-            <div class="row card-panel teal lighten-4">
-                <div class="col s1"></div>
-                <div class="col s5">
-                    <!-- price range -->
-                    <label class="title-label">Rentang harga</label>
-                    <br><br><br>
-                    <input type="hidden" name="low" id="low">
-                    <input type="hidden" name="high" id="high">
-                    <div id="price-slider"></div>
-                </div>
-                <div class="col s2"></div>
-                <div class="input-field col s3">
-                    <br>
-                    <select name="mode" form="cari">
-                        <option value="" disabled selected>Pilih opsi</option>
-                        <option value="relevance">Ngidam</option>
-                        <option value="location">Mager</option>
-                        <option value="price">Bokek</option>
-                    </select>
-                    <label class="title-label">Mode</label>
-                </div>
-                <div class="col s1"></div>
+            <div class="row">
+                <!-- Filter -->
                 <div class="col s12">
-                    <div class="filter">
-                        <br>
-                        <button class="btn waves-effect waves-light " type="submit">Saring
-                            <i class="material-icons left">filter_list</i>
-                        </button>
+                    <div class="input-field col s5">
+                        <div class="title-label"><center>Mode</center></div>
+                        <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+                            <div class="btn-group" role="group" aria-label="First group">
+                                <a href="/search?mode=price" class="btn btn-small {{ (!isset($searchMode) || $searchMode === 'price')? 'active' : '' }}">Bokek</a>
+                                <a href="/search?mode=location" class="btn btn-small {{ isset($searchMode) && $searchMode === 'location'? 'active' : '' }}">Mager</a>
+                                <a href="/search?mode=relevance" class="btn btn-small {{ isset($searchMode) && $searchMode === 'relevance'? 'active' : '' }}">Ngidam</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s6 offset-s1">
+                        <!-- price range -->
+                        <div class="title-label"><center>Rentang harga</center></div>
+                        <div class="input-slider" style="padding-top: 40px;">
+                            <input type="hidden" name="low" id="low">
+                            <input type="hidden" name="high" id="high">
+                            <div id="price-slider"></div>
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        <div class="filter">
+                            <br>
+                            <button class="btn waves-effect waves-light " type="submit">Saring
+                                <i class="material-icons left">filter_list</i>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
 
         <div class="row">
             <div class="col s1"></div>
