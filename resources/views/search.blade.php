@@ -21,17 +21,17 @@
         <!-- Logo and search bar -->
         <div class="row card-panel green lighten-3">
             <form action="/search" method="GET" id="cari">
-                <div class="col s1"></div>
-                <div class="col s10">
-                    <div class="col s3 logo">
+                <div class="col s12">
+                    <div class="col s2 logo">
                         <img src="https://cldup.com/qxy65mfeGo.png" width="75px" height="75px" alt="logo">
                         Locohunter
                     </div>
-                    <div class="col s1"></div>
-                    <div class="input-field col s6">
-                        <br>
-                        <input type="text" id="autocomplete-input" class="autocomplete" name="q" value="{{ $query }}">
-                        <label class="title-label" for="autocomplete-input">Cari makanan...</label>
+                    <div class="col offset-s1 s9">
+                        <div class="row" style="margin-top: 30px;">
+                            <div class="col s12 search-wrapper card input-field">
+                                <input id="search" class="autocomplete" placeholder="Cari obat laparmu.." value="{{ $query }}" autocomplete="off"><i class="material-icons btn-search">search</i>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col s1"></div>
