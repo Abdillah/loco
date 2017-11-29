@@ -17,13 +17,14 @@ class CreateFoodstuffsTable extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->string('description');
+            $table->string('price');
             $table->integer('eatspot_id')->unsigned();
             $table->nullableMorphs('taggable');
             $table->timestamps();
-            
+
             $table->foreign('eatspot_id')
             ->references('id')->on('eatspots')
-            ->onDelete('cascade');            
+            ->onDelete('cascade');
         });
     }
 
