@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="{{ asset('css/nouislider.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/search.css') }}">
-
 </head>
 <body>
     <div class="container">
@@ -54,9 +53,9 @@
                     <br>
                     <select name="mode" form="cari">
                         <option value="" disabled selected>Pilih opsi</option>
-                        <option value="ngidam">Ngidam</option>
-                        <option value="mager">Mager</option>
-                        <option value="bokek">Bokek</option>
+                        <option value="relevance">Ngidam</option>
+                        <option value="location">Mager</option>
+                        <option value="price">Bokek</option>
                     </select>
                     <label class="title-label">Mode</label>
                 </div>
@@ -72,43 +71,29 @@
             </form>
         </div>
 
-        <div class="row card-panel  light-green lighten-5">
+        <div class="row">
             <div class="col s1"></div>
-            <div class="col s10">
+            <div class="col s12">
 
                 <!-- Foreach loop -->
                 <ul class="collection">
-                    <li class="collection-item">
-                        <img class="items-img" src="https://pbs.twimg.com/profile_images/3343963833/20a1d4e40685feccf83cdd8e54a34485.jpeg" alt="">
-                        <div class="items">
-                            <span class="item">Tempe Goreng</span>
-                            <br><br>
-                            <span class="star-icon full">☆</span>
-                            <span class="star-icon full">☆</span>
-                            <span class="star-icon full">☆</span>
-                            <span class="star-icon half">☆</span>
-                            <span class="star-icon">☆</span>
-                        </div>
-                        <p class="price">Rp 6.000</p>
-                        <p class="place">Spesial Sambal</p>
-                    </li>
-                </ul>
-
-                <ul class="collection">
-                    <li class="collection-item">
-                        <img class="items-img" src="https://c1.staticflickr.com/7/6033/6276453540_5ea46e97e8_b.jpg" alt="">
-                        <div class="items">
-                            <span class="item">Nasi Goreng</span>
-                            <br><br>
-                            <span class="star-icon full">☆</span>
-                            <span class="star-icon full">☆</span>
-                            <span class="star-icon full">☆</span>
-                            <span class="star-icon full">☆</span>
-                            <span class="star-icon half">☆</span>
-                        </div>
-                        <p class="price">Rp 10.000</p>
-                        <p class="place">Burjo Berkah</p>
-                    </li>
+                    @foreach ($foodstuffs as $i => $foodstuff)
+                        <li class="collection-item card-panel light-green lighten-5">
+                            <img class="items-img" src="https://pbs.twimg.com/profile_images/3343963833/20a1d4e40685feccf83cdd8e54a34485.jpeg" alt="">
+                            <div class="items">
+                                <span class="item">{{ $foodstuff->name }}</span>
+                                <div class="rating">
+                                    <span class="star-icon full">☆</span>
+                                    <span class="star-icon full">☆</span>
+                                    <span class="star-icon full">☆</span>
+                                    <span class="star-icon half">☆</span>
+                                    <span class="star-icon">☆</span>
+                                </div>
+                                <p class="price" style="text-align: right">Rp {{ number_format($foodstuff->price, 2, ",", ".") }}</p>
+                                <p class="place" style="text-align: right">{{ $foodstuff->eatspot->name }}</p>
+                            </div>
+                        </li>
+                    @endforeach
                 </ul>
 
             </div>
