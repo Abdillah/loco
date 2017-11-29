@@ -36,6 +36,21 @@
 var searchMode = "{{ $searchMode }}";
 </script>
 <script type="text/javascript" src="{{ asset('js/component-search.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/location.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var location = JSON.parse(localStorage.getItem('user.location'));
+        if (location === null || location['state'] !== 'success') {
+            askLocationAndAddress().then(function(location) {
+                $('#user-location').text(location['addr']);
+            });
+        } else {
+            location['addr'] && $('#user-location').text(location['addr']);
+        }
+
+        $('#change-user-location').click(askLocationAndAddress);
+    })
+</script>
 @endsection
 
 @section('content')
