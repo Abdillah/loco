@@ -6,6 +6,9 @@
     RewriteEngine On
 
     RewriteCond %{HTTPS} off
+    RewriteCond %{HTTP_HOST} !^localhost [NC]
+    RewriteCond %{HTTP_HOST} !^loco.dev [NC]
+    RewriteCond %{REMOTE_ADDR} !^127\.0\.0\.1$
     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=302,L,QSA]
 
     # Redirect Trailing Slashes If Not A Folder...
