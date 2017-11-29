@@ -21,7 +21,7 @@
     <div class="container">
         <!-- Logo and search bar -->
         <div class="row card-panel green lighten-3">
-            <form action="." method="GET" id="cari">
+            <form action="/search" method="GET" id="cari">
                 <div class="col s1"></div>
                 <div class="col s10">
                     <div class="col s3 logo">
