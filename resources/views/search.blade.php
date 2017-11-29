@@ -27,10 +27,10 @@
                     <div class="col s12">
                         <div class="col s2 logo">
                             <img src="https://cldup.com/qxy65mfeGo.png" width="75px" height="75px" alt="logo">
-                            Locohunter
+                            <span class="brand-text">Locohunter</span>
                         </div>
                         <div class="col offset-s1 s9">
-                            <div class="row" style="margin-top: 30px;">
+                            <div class="row">
                                 <div class="col s12 search-wrapper card input-field">
                                     <input id="search" name="q" class="autocomplete" placeholder="Cari obat laparmu.." value="{{ $query }}" autocomplete="off"><i class="material-icons btn-search">search</i>
                                 </div>
