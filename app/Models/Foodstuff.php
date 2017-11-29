@@ -8,6 +8,6 @@ class Foodstuff extends Model
 {
     public function eatspot()
     {
-        return $this->hasMany('App\Models\Eatspot');
+        return $this->belongsTo('App\Models\Eatspot');
     }
 }
