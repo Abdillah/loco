@@ -2,13 +2,6 @@
 
 
 $(document).ready(function() {
-    var geoSuccess = function(position) {
-        localStorage.setItem('user.lat', position.coords.latitude);
-        localStorage.setItem('user.lon', position.coords.longitude);
-        console.log(position);
-    };
-    navigator.geolocation.getCurrentPosition(geoSuccess);
-
     function getParameterByName(name, url) {
         if (!url) url = window.location.href;
         name = name.replace(/[\[\]]/g, "\\$&");
