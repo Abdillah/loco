@@ -15,7 +15,7 @@ class CreateFoodstuffsTable extends Migration
     {
         Schema::create('foodstuffs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->unique();
+            $table->string('name');
             $table->string('description');
             $table->string('price');
             $table->integer('eatspot_id')->unsigned();

@@ -85,11 +85,12 @@ class FoodstuffsTableSeeder extends Seeder
         ];
 
         foreach ($menus as $eatspotName => $foodstuffs) {
-            $eatspotModel = App\Models\Eatspot::where('name', $eatspot)->all();
+            $eatspotModel = App\Models\Eatspot::where('name', $eatspotName)->first();
 
             foreach ($foodstuffs as $i => $foodstuff) {
-                $foodstuffModel = new App\Models\Eatspot($foodstuff);
-                $foodstuffModel->eatspot = $eatspotModel;
+                $foodstuffModel = new App\Models\Foodstuff(array_merge($foodstuff, [
+                    'eatspot_id' => $eatspotModel->id
+                ]));
                 $foodstuffModel->save();
             }
         }
