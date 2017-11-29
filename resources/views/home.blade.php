@@ -122,9 +122,9 @@
                             <center><strong>Mode</strong></center>
                             <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
                                 <div class="btn-group" role="group" aria-label="First group">
-                                    <button type="button" class="btn btn-small active">Bokek</button>
-                                    <button type="button" class="btn btn-small">Mager</button>
-                                    <button type="button" class="btn btn-small">Ngidam</button>
+                                    <a href="/?mode=price" class="btn btn-small {{ (!isset($searchMode) || $searchMode === 'price')? 'active' : '' }}">Bokek</a>
+                                    <a href="/?mode=location" class="btn btn-small {{ $searchMode === 'location'? 'active' : '' }}">Mager</a>
+                                    <a href="/?mode=relevance" class="btn btn-small {{ $searchMode === 'relevance'? 'active' : '' }}">Ngidam</a>
                                 </div>
                             </div>
                         </div>
