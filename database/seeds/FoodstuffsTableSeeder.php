@@ -22,31 +22,31 @@ class FoodstuffsTableSeeder extends Seeder
                 [
                     'name' => 'Nasi Telor Orak-Arik',
                     'rating' => 'Good',
-                    'description' => 'Nasi + sayur + telor orak-arik'
+                    'description' => 'Nasi + sayur + telor orak-arik',
                     'price' => 8000,
                 ],
                 [
                     'name' => 'Magelangan',
                     'rating' => 'Most Recommended',
-                    'description' => 'Nasi goreng dengan Mi + telor orak-arik'
+                    'description' => 'Nasi goreng dengan Mi + telor orak-arik',
                     'price' => 9000,
                 ],
                 [
                     'name' => 'Mi Dok-dok',
                     'rating' => 'Recommended',
-                    'description' => 'Indomie masak nyemek + sayur + telor'
+                    'description' => 'Indomie masak nyemek + sayur + telor',
                     'price' => 9000,
                 ],
                 [
                     'name' => 'Nasi Ayam',
                     'rating' => 'Mediocre',
-                    'description' => 'Nasi + sayur + ayam goreng/opor/balado'
+                    'description' => 'Nasi + sayur + ayam goreng/opor/balado',
                     'price' => 9000,
                 ],
                 [
                     'name' => 'Nasi Terong',
                     'rating' => 'Mediocre',
-                    'description' => 'Nasi + sayur + terong balado'
+                    'description' => 'Nasi + sayur + terong balado',
                     'price' => 6000,
                 ],
             ],
@@ -60,31 +60,31 @@ class FoodstuffsTableSeeder extends Seeder
                 [
                     'name' => 'Nasi Telor Orak-Arik + Gorengan',
                     'rating' => 'Most Recommended',
-                    'description' => 'Nasi + sayur + gorengan orak-arik'
-                    'price' => 6000 + '@500',
+                    'description' => 'Nasi + sayur + gorengan orak-arik (satu @500)',
+                    'price' => 6000,
                 ],
                 [
                     'name' => 'Magelangan',
                     'rating' => 'Good',
-                    'description' => 'Nasi goreng dengan Mi + telor orak-arik'
+                    'description' => 'Nasi goreng dengan Mi + telor orak-arik',
                     'price' => 8000,
                 ],
                 [
                     'name' => 'Mi Dok-dok',
                     'rating' => 'Mediocre',
-                    'description' => 'Indomie masak nyemek + sayur + telor'
+                    'description' => 'Indomie masak nyemek + sayur + telor',
                     'price' => 8000,
                 ],
                 [
                     'name' => 'Nasi Ayam',
                     'rating' => 'Mediocre',
-                    'description' => 'Nasi + Sayur + Ayam goreng'
+                    'description' => 'Nasi + Sayur + Ayam goreng',
                     'price' => 9000,
                 ],
                 [
                     'name' => 'Nasi Ayam Geprek',
                     'rating' => 'Good',
-                    'description' => 'Nasi + Sayur + Ayam geprek'
+                    'description' => 'Nasi + Sayur + Ayam geprek',
                     'price' => 9000,
                 ],
             ],
