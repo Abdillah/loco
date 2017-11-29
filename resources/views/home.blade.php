@@ -58,7 +58,7 @@ var searchMode = "{{ $searchMode }}";
 @endsection
 
 @section('content')
-<div class="container" style="margin-top: 30vh">
+<div class="container" style="margin-top: 25vh">
     <div class="row">
         <div class="col m8 col offset-m2">
             <div class="row">
