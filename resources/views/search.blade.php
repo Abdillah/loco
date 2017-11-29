@@ -109,34 +109,23 @@
     <script type="text/javascript" src="{{ asset('js/nouislider.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('library/ion.rangeSlider-2.2.0/js/ion-rangeSlider/ion.rangeSlider.min.js')}}" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{ asset('js/component-search.js') }}"></script>
-
+    <script type="text/javascript" src="{{ asset('js/location.js') }}"></script>
     <script type="text/javascript">
+        function replaceUserLocation(lat, lon) {
+            $('.btn-navigate').each(function(i, el) {
+                var href = $(this).attr('href');
+                $(this).attr('href', href.replace('-7.782884,110.3648875', lat + ',' + lon));
+            });
+        }
+
         $(document).ready(function() {
-            function replaceUserLocation() {
-                $('.btn-navigate').each(function(i, el) {
-                    var href = $(this).attr('href');
-                    var lat = localStorage.getItem('user.lat');
-                    var lon = localStorage.getItem('user.lon');
-                    $(this).attr('href', href.replace('-7.782884,110.3648875', lat + ',' + lon));
+            var location = JSON.parse(localStorage.getItem('user.location'));
+            if (location === null || location['state'] !== 'success') {
+                askLocationAndAddress().then(function(location) {
+                    replaceUserLocation(location['lat'], location['lon']);
                 });
             }
-
-            var geoSuccess = function(position) {
-                localStorage.setItem('user.lat', position.coords.latitude);
-                localStorage.setItem('user.lon', position.coords.longitude);
-                replaceUserLocation();
-            };
-
-            var geoError = function(error) {
-                switch(error.code) {
-                    case error.TIMEOUT:
-                    // The user didn't accept the callout
-                    break;
-                }
-            };
-
-            navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
-        });
+        })
     </script>
 </body>
 </html>
