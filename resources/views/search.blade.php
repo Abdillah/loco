@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!--Misc-->
     <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Material+Icons" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,600|Lato|Open+Sans|Material+Icons" type="text/css">
     <!--Import materialize.css-->
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
