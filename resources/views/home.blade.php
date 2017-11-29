@@ -80,6 +80,22 @@
             from: 8000,
             to: 40000,
         });
+
+        function search(query) {
+            window.location = '/search?q=' + query;
+        }
+
+        $('#search').keypress(function(e) {
+            if (e.keyCode === 13) {
+                var query = $(this).val();
+                search(query);
+            }
+        });
+
+        $('.btn-search').click(function(e) {
+            var query = $(this).val();
+            search(query);
+        });
     });
 </script>
 @endsection
@@ -95,7 +111,7 @@
             </div>
             <div class="row">
                 <div class="col s12 search-wrapper card">
-                    <input id="search" placeholder="Cari obat laparmu.."><i class="material-icons">search</i>
+                    <input id="search" placeholder="Cari obat laparmu.."><i class="material-icons btn-search">search</i>
                     <div class="search-results"></div>
                 </div>
             </div>
