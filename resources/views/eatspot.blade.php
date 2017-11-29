@@ -48,5 +48,19 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col m8 col offset-m2">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">
+                        Menu Makanan
+                    </span>
+                    <p>...</p>
+                </div>
+                {{-- Maps and Navigation --}}
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
