@@ -40,7 +40,7 @@ var searchMode = "{{ $searchMode }}";
             </div>
             <div class="row">
                 <div class="col s12 search-wrapper card">
-                    <input id="search" name="q" placeholder="Cari obat laparmu.."><i class="material-icons btn-search">search</i>
+                    <input id="search" class="autocomplete" name="q" placeholder="Cari obat laparmu.." autocomplete="off"><i class="material-icons btn-search">search</i>
                     <div class="search-results"></div>
                 </div>
             </div>
