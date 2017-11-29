@@ -19,22 +19,23 @@ $(document).ready(function() {
             var lon = localStorage.getItem('user.lon');
             params = '&lat=' + lat + '&lon=' + lon;
         }
-        window.location = '/search?mode=' + mode + 'q=' + query + params;
+        window.location = '/search?mode=' + mode + '&q=' + query + params;
     }
 
     $('#search').keypress(function(e) {
         if (e.keyCode === 13) {
             var mode = getParameterByName('mode') || 'relevance';
             var query = $(this).val();
-            search(query);
+            search(mode, query);
         }
     });
 
     $('.btn-search').click(function(e) {
         var mode = getParameterByName('mode') || 'relevance';
-        var query = $(this).val();
-        search(query);
+        var query = $('#search').val();
+        search(mode, query);
     });
+
     //
     // function filter50( value, type ){
     //     return value % 50 ? 2 : 1;
