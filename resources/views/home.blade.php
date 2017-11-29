@@ -16,6 +16,15 @@
         vertical-align: text-bottom;
         width: 100px;
     }
+
+    .panel-location {
+        text-align: center;
+        color: #888;
+    }
+
+    #user-location {
+        display: inline-block;
+    }
 </style>
 <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 @endsection
@@ -66,6 +75,11 @@ var searchMode = "{{ $searchMode }}";
                             @endif
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s8 offset-s2 panel-location">
+                    <i class="material-icons">place</i> <div id="user-location">Locating... (we need your location)</div> (<a id="change-user-location" href="#">Change</a>)
                 </div>
             </div>
         </div>
