@@ -6,6 +6,11 @@
 <link rel="stylesheet" href="{{ asset('library/ion.rangeSlider-2.2.0/css/ion.rangeSlider.css') }}">
 <link rel="stylesheet" href="{{ asset('library/ion.rangeSlider-2.2.0/css/ion.rangeSlider.skinFlat.css') }}">
 <style media="screen">
+    .logo-loco {
+        vertical-align: text-bottom;
+        width: 100px;
+    }
+
     #search {
         display: block;
         font-size: 16px;
@@ -106,7 +111,7 @@
         <div class="col m8 col offset-m2">
             <div class="row">
                 <div class="col s12" style="text-align: center; font-size: 4em; font-family: 'Raleway', sans-serif;">
-                    Loco
+                    <img class="logo-loco" src="https://cldup.com/qxy65mfeGo.png" alt=""> Loco
                 </div>
             </div>
             <div class="row">
