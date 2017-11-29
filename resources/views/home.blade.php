@@ -70,6 +70,18 @@
 @section('app.script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 <script src="{{ asset('library/ion.rangeSlider-2.2.0/js/ion-rangeSlider/ion.rangeSlider.min.js')}}" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#price-range").ionRangeSlider({
+            type: 'double',
+            min: 5000,
+            max: 100000,
+            step: 500,
+            from: 8000,
+            to: 40000,
+        });
+    });
+</script>
 @endsection
 
 @section('content')
