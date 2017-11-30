@@ -26,8 +26,10 @@
                 <div class="col s12">
                     <div class="col s12">
                         <div class="col s2 logo">
-                            <img src="https://cldup.com/qxy65mfeGo.png" width="75px" height="75px" alt="logo">
-                            <span class="brand-text">Locohunter</span>
+                            <a href="/">
+                                <img src="https://cldup.com/qxy65mfeGo.png" width="75px" height="75px" alt="logo">
+                                <span class="brand-text">Locohunter</span>
+                            </a>
                         </div>
                         <div class="col offset-s1 s9">
                             <div class="row">
