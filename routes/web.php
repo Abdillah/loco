@@ -24,6 +24,8 @@ Route::get('/search', function (Request $request) {
     $mode = $request->input('mode');
     if ($request->has('price-range')) {
         $priceRange = explode(';', $request->input('price-range'));
+        $priceRange[0] = intval($priceRange[0]);
+        $priceRange[1] = intval($priceRange[1]);
     } else {
         $priceRange = [ 8000, 40000 ];
     }
@@ -32,8 +34,8 @@ Route::get('/search', function (Request $request) {
     $queries = Foodstuff::query();
 
     if ($mode === 'price') {
-        $queries = $queries->where('price', '>', $priceRange[0])
-        ->Where('price', '<', $priceRange[1])
+        $queries = $queries->where('price', '>=', $priceRange[0])
+        ->where('price', '<=', $priceRange[1])
         ->orderBy('price', 'ASC');
     } else if ($mode === 'relevance') {
         $queries = $queries->where('name', 'LIKE', "%$q%")
@@ -54,6 +56,7 @@ Route::get('/search', function (Request $request) {
 
     return view('search', [
         'searchMode' => $mode,
+        'priceRange' => "{$priceRange[0]};{$priceRange[1]}",
         'query' => $q,
         'foodstuffs' => $foods
     ]);
