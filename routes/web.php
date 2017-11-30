@@ -23,7 +23,7 @@ Route::get('/search', function (Request $request) {
     $q = $request->input('q');
     $mode = $request->input('mode');
     if ($request->has('price-range')) {
-        $priceRange = explode(':', $request->input('price-range'));
+        $priceRange = explode(';', $request->input('price-range'));
     } else {
         $priceRange = [ 8000, 40000 ];
     }
@@ -33,7 +33,7 @@ Route::get('/search', function (Request $request) {
 
     if ($mode === 'price') {
         $queries = $queries->where('price', '>', $priceRange[0])
-        ->orWhere('price', '<', $priceRange[1])
+        ->Where('price', '<', $priceRange[1])
         ->orderBy('price', 'ASC');
     } else if ($mode === 'relevance') {
         $queries = $queries->where('name', 'LIKE', "%$q%")
