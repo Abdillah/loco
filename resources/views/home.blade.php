@@ -65,7 +65,7 @@ var searchMode = "{{ $searchMode }}";
 <div class="container" style="margin-top: 25vh">
     <div class="row">
         <div class="col m8 col offset-m2">
-            <form action="/search" method="GET" id="cari">
+            <form action="/search" method="GET" id="search-form">
                 <div class="row">
                     <div class="col s12" style="text-align: center; font-size: 4em; font-family: 'Raleway', sans-serif;">
                         <img class="logo-loco" src="https://cldup.com/qxy65mfeGo.png" alt=""> Locohunter

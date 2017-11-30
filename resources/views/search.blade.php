@@ -20,7 +20,7 @@
 </head>
 <body>
     <div class="container">
-        <form action="/search" method="GET" id="cari">
+        <form action="/search" method="GET" id="search-form">
             <!-- Logo and search bar -->
             <div class="row">
                 <div class="col s12">

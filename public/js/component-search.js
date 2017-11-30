@@ -24,16 +24,12 @@ $(document).ready(function() {
 
     $('#search').keypress(function(e) {
         if (e.keyCode === 13) {
-            var mode = getParameterByName('mode') || 'relevance';
-            var query = $(this).val();
-            search(mode, query);
+            $('form#search-form').submit();
         }
     });
 
     $('.btn-search').click(function(e) {
-        var mode = getParameterByName('mode') || 'relevance';
-        var query = $('#search').val();
-        search(mode, query);
+        $('form#search-form').submit();
     });
 
     //
