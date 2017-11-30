@@ -78,6 +78,15 @@ body {
   font-family: "Open Sans";
 }
 
+.panel-location {
+    text-align: center;
+    color: #888;
+}
+
+#user-location {
+    display: inline-block;
+}
+
 .noUi-tooltip {
   font-size: 12px;
 }
