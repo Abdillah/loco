@@ -3,7 +3,7 @@
 body {
   font-family: 'Lato';
   background-image: url(https://cldup.com/qstFqZCgVY.png);
-  background-size: cover;
+  background-size: contain;
   padding-top: 3%;
   padding-bottom: 3%;
 }
