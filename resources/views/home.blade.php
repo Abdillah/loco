@@ -110,7 +110,7 @@ var searchMode = "{{ $searchMode }}";
                     </div>
                 </div>
             </form>
-            @if (isset($searchMode) && $searchMode !== 'location')
+            @if (!isset($searchMode) || $searchMode !== 'location')
                 <div class="row">
                     <div class="col s8 offset-s2 panel-location">
                         <i class="material-icons">place</i> <div id="user-location">Locating... (we need your location)</div> (<a id="change-user-location" href="#">Change</a>)
