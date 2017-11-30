@@ -93,9 +93,9 @@
                 <!-- Foreach loop -->
                 <ul class="collection">
                     @foreach ($foodstuffs as $i => $foodstuff)
-                        <li class="collection-item card-panel light-green lighten-5">
-                            <img class="items-img" src="https://pbs.twimg.com/profile_images/3343963833/20a1d4e40685feccf83cdd8e54a34485.jpeg" alt="">
-                            <div class="items">
+                        <li class="collection-item card-panel">
+                            <img class="items-img" src="https://pbs.twimg.com/profile_images/3343963833/20a1d4e40685feccf83cdd8e54a34485.jpeg" alt=""><!--
+                        ---><div class="items">
                                 <span class="item">{{ $foodstuff->name }}</span>
                                 <div class="rating">
                                     <span class="star-icon full">☆</span>
@@ -106,6 +106,12 @@
                                 </div>
                                 <p class="price" style="text-align: right">Rp {{ number_format($foodstuff->price, 2, ",", ".") }}</p>
                                 <p class="place" style="text-align: right">{{ $foodstuff->eatspot->name }}</p>
+                            </div><!---
+                        ---><div class="action">
+                                {{-- Tugu Yogya --}}
+                                <a href="https://www.google.com/maps/dir/?api=1&origin=-7.782884,110.3648875&amp;destination={{ $foodstuff->eatspot->latitude }},{{ $foodstuff->eatspot->longitude }}" target="_blank" class="btn btn-navigate" style="display: block; text-decoration: none; color: white;"><i class="material-icons left">navigation</i> Tunjukin</a>
+                                <br>
+                                <a href="/eatspot/{{ $foodstuff->eatspot->id }}" class="btn" style="display: block; text-decoration: none; color: white;"><i class="material-icons left">place</i> Warung</a>
                             </div>
                         </li>
                     @endforeach
