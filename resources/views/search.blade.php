@@ -65,7 +65,7 @@
                             @elseif (isset($searchMode) && $searchMode === 'price')
                                 <div class="title-label"><center>Bokek meter</center></div>
                                 <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-                                    <input type="text" id="price-range" name="price-range" value="" />
+                                    <input type="text" id="price-range" name="price-range" value="{{ $priceRange }}" />
                                 </div>
                             @elseif (isset($searchMode) && $searchMode === 'location')
                                 <div class="title-label"><center><i class="material-icons">place</i> Mager checkpoint</center></div>
