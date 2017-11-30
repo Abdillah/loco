@@ -97,7 +97,7 @@
 
                 <!-- Foreach loop -->
                 <ul class="collection">
-                    @foreach ($foodstuffs as $i => $foodstuff)
+                    @forelse ($foodstuffs as $i => $foodstuff)
                         <li class="collection-item card-panel">
                             <img class="items-img" src="https://pbs.twimg.com/profile_images/3343963833/20a1d4e40685feccf83cdd8e54a34485.jpeg" alt=""><!--
                         ---><div class="items">
@@ -117,7 +117,11 @@
                                 <a href="/eatspot/{{ $foodstuff->eatspot->id }}" class="btn" style="display: block; text-decoration: none; color: white;" title="{{ $foodstuff->eatspot->name }}"><i class="material-icons left">store</i> Kunjungi</a>
                             </div>
                         </li>
-                    @endforeach
+                    @empty
+                        <center>
+                        <h2 style="color: #666;">Duh kosong, cari yang lain dong!</h2>
+                        </center>
+                    @endforelse
                 </ul>
 
             </div>
