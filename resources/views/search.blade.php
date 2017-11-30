@@ -102,19 +102,19 @@
                             <img class="items-img" src="https://pbs.twimg.com/profile_images/3343963833/20a1d4e40685feccf83cdd8e54a34485.jpeg" alt=""><!--
                         ---><div class="items">
                                 <span class="item">{{ $foodstuff->name }}</span>
+                                <p class="price" style="font-weight: bold">Rp {{ number_format($foodstuff->price, 2, ",", ".") }}</p>
                                 <div class="rating">
                                     @for ($i=0; $i < $foodstuff->ratingStars; $i++)
                                         <i class="material-icons">star</i>
                                     @endfor
                                 </div>
-                                <p class="price" style="text-align: right">Rp {{ number_format($foodstuff->price, 2, ",", ".") }}</p>
-                                <p class="place" style="text-align: right">{{ $foodstuff->eatspot->name }}</p>
                             </div><!---
                         ---><div class="action">
+                                <div class="place"><i class="material-icons">place</i> <span>{{ $foodstuff->eatspot->name }}</span></div>
                                 {{-- Tugu Yogya --}}
                                 <a href="https://www.google.com/maps/dir/?api=1&origin=-7.782884,110.3648875&amp;destination={{ $foodstuff->eatspot->latitude }},{{ $foodstuff->eatspot->longitude }}" target="_blank" class="btn btn-navigate" style="display: block; text-decoration: none; color: white;"><i class="material-icons left">navigation</i> Tunjukin</a>
                                 <br>
-                                <a href="/eatspot/{{ $foodstuff->eatspot->id }}" class="btn" style="display: block; text-decoration: none; color: white;"><i class="material-icons left">place</i> Warung</a>
+                                <a href="/eatspot/{{ $foodstuff->eatspot->id }}" class="btn" style="display: block; text-decoration: none; color: white;" title="{{ $foodstuff->eatspot->name }}"><i class="material-icons left">store</i> Kunjungi</a>
                             </div>
                         </li>
                     @endforeach

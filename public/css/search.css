@@ -45,7 +45,7 @@ body {
 .items {
   display: inline-block;
   vertical-align: top;
-  padding: 10px 20px 20px 20px;
+  padding: 20px;
   line-height: 1.2;
   font-size: 1.6rem;
   color: #37474f;
@@ -60,13 +60,13 @@ body {
   text-align: center;
 }
 
-.place{
-  font-size: 1.4rem;
-  /*position: absolute;*/
-  bottom: 8px;
-  right: 16px;
-  font-size: 18px;
-  font-family: "Open Sans";
+.place {
+  font-size: 0.95em;
+  padding: 10px 0;
+}
+
+.place span {
+  vertical-align: top;
 }
 
 .price {
@@ -96,7 +96,6 @@ body {
     text-shadow: 0 0 2px rgba(0,0,0,0.7);
     font-size: 20px;
     position: relative;
-    top: 15px;
     padding: 5px;
     transform: scale(1.6);
 }
