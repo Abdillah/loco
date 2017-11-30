@@ -57,18 +57,20 @@ $(document).ready(function() {
     //
     // });
 
-    var range = $("#price-range").val().split(';');
-    var from = range? range[0] : 8000;
-    var to   = range? range[1] : 40000;
+    if (getParameterByName('mode') === 'price') {
+        var range = $("#price-range").val().split(';');
+        var from = range? range[0] : 8000;
+        var to   = range? range[1] : 40000;
 
-    $("#price-range").ionRangeSlider({
-        type: 'double',
-        min: 1000,
-        max: 100000,
-        step: 500,
-        from: from,
-        to: to,
-    });
+        $("#price-range").ionRangeSlider({
+            type: 'double',
+            min: 1000,
+            max: 100000,
+            step: 500,
+            from: from,
+            to: to,
+        });
+    }
 
     // var lowInput = document.getElementById('low');
     // var highInput = document.getElementById('high');
