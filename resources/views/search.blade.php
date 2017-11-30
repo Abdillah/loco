@@ -57,12 +57,17 @@
                             <input type="hidden" name="mode" value="{{ $searchMode ?: 'relevance' }}">
                         </div>
                         <div class="col s5">
-                            @if (!isset($searchMode) || $searchMode === 'price')
+                            @if (!isset($searchMode) || $searchMode === 'relevance')
+                                <div class="title-label"><center>Ngidam, gak bisa enggak!</center></div>
+                                <div>
+                                    <p><center>Saya mau yang persis sama</center></p>
+                                </div>
+                            @elseif (isset($searchMode) && $searchMode === 'price')
                                 <div class="title-label"><center>Bokek meter</center></div>
                                 <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
                                     <input type="text" id="price-range" name="price-range" value="" />
                                 </div>
-                            @elseif (!isset($searchMode) || $searchMode === 'location')
+                            @elseif (isset($searchMode) && $searchMode === 'location')
                                 <div class="title-label"><center><i class="material-icons">place</i> Mager checkpoint</center></div>
                                 <div class="panel-location mb-3" role="toolbar" aria-label="Toolbar with button groups">
                                     <div id="user-location">Locating... (we need your location)</div> (<a id="change-user-location" href="#">Change</a>)
