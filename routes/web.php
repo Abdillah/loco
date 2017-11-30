@@ -21,12 +21,35 @@ Route::get('/', function (Request $request) {
 
 Route::get('/search', function (Request $request) {
     $q = $request->input('q');
+    $mode = $request->input('mode');
+    if ($request->has('price-range')) {
+        $priceRange = explode(':', $request->input('price-range'));
+    } else {
+        $priceRange = [ 8000, 40000 ];
+    }
 
     // Query database for foods
-    $foods = Foodstuff::where('name', 'LIKE', "%$q%")
-        ->orWhere('description', 'LIKE', "%$q%");
+    $queries = Foodstuff::query();
 
-    return view('search', [ 'foodstuffs' => $foods ]);
+    if ($mode === 'price') {
+        $queries = $queries->where('price', '>', $priceRange[0])
+        ->orWhere('price', '<', $priceRange[1])
+        ->orderBy('price', 'ASC');
+    } else if ($mode === 'relevance') {
+        $queries = $queries->where('name', 'LIKE', "%$q%")
+        ->where('name', 'LIKE', "%$q%");
+    } else if ($mode === 'location') {
+        $queries = $queries->where('price', '>', $priceRange[0])
+        ->orWhere('price', '<', $priceRange[1]);
+    }
+
+    $foods = $queries->getModels();
+
+    return view('search', [
+        'searchMode' => $mode,
+        'query' => $q,
+        'foodstuffs' => $foods
+    ]);
 });
 
 Route::get('/eatspot/{id}', function ($id) {
