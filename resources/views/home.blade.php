@@ -46,9 +46,13 @@ var searchMode = "{{ $searchMode }}";
         var location = JSON.parse(localStorage.getItem('user.location'));
         if (location === null || location['state'] !== 'success') {
             askLocationAndAddress().then(function(location) {
+                $('#lat').val(location['lat']);
+                $('#lon').val(location['lon']);
                 $('#user-location').text(location['addr']);
             });
         } else {
+            $('#lat').val(location['lat']);
+            $('#lon').val(location['lon']);
             location['addr'] && $('#user-location').text(location['addr']);
         }
 
@@ -61,46 +65,58 @@ var searchMode = "{{ $searchMode }}";
 <div class="container" style="margin-top: 25vh">
     <div class="row">
         <div class="col m8 col offset-m2">
-            <div class="row">
-                <div class="col s12" style="text-align: center; font-size: 4em; font-family: 'Raleway', sans-serif;">
-                    <img class="logo-loco" src="https://cldup.com/qxy65mfeGo.png" alt=""> Locohunter
+            <form action="/search" method="GET" id="cari">
+                <div class="row">
+                    <div class="col s12" style="text-align: center; font-size: 4em; font-family: 'Raleway', sans-serif;">
+                        <img class="logo-loco" src="https://cldup.com/qxy65mfeGo.png" alt=""> Locohunter
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col s12 search-wrapper card">
-                    <input id="search" class="autocomplete" name="q" placeholder="Cari obat laparmu.." autocomplete="off"><i class="material-icons btn-search">search</i>
-                    <div class="search-results"></div>
+                <div class="row">
+                    <div class="col s12 search-wrapper card">
+                        <input id="search" class="autocomplete" name="q" placeholder="Cari obat laparmu.." autocomplete="off"><i class="material-icons btn-search">search</i>
+                        <div class="search-results"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="row" style="margin-top: 20px">
-                <div>
-                    <div class="row">
-                        <div class="col s6">
-                            <div class="title-label"><center>Mode</center></div>
-                            <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-                                <div class="btn-group" role="group" aria-label="First group">
-                                    <a href="/?mode=price" class="btn btn-small {{ (!isset($searchMode) || $searchMode === 'price')? 'active' : '' }}">Bokek</a>
-                                    <a href="/?mode=location" class="btn btn-small {{ $searchMode === 'location'? 'active' : '' }}">Mager</a>
-                                    <a href="/?mode=relevance" class="btn btn-small {{ $searchMode === 'relevance'? 'active' : '' }}">Ngidam</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col s6">
-                            @if (!isset($searchMode) || $searchMode === 'price')
-                                <div class="title-label"><center>Bokek meter</center></div>
+                <div class="row" style="margin-top: 20px">
+                    <div>
+                        <div class="row">
+                            <div class="col s6">
+                                <div class="title-label"><center>Mode</center></div>
                                 <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-                                    <input type="text" id="price-range" name="price-range" value="" />
+                                    <div class="btn-group" role="group" aria-label="First group">
+                                        <a href="/?mode=relevance" class="btn btn-small {{ (!isset($searchMode) || $searchMode === 'relevance')? 'active' : '' }}">Ngidam</a>
+                                        <a href="/?mode=price" class="btn btn-small {{ $searchMode === 'price'? 'active' : '' }}">Bokek</a>
+                                        <a href="/?mode=location" class="btn btn-small {{ $searchMode === 'location'? 'active' : '' }}">Mager</a>
+                                    </div>
                                 </div>
-                            @endif
+                                <input type="hidden" name="mode" value="{{ $searchMode ?: 'relevance' }}">
+                            </div>
+                            <div class="col s6">
+                                @if (isset($searchMode) && $searchMode === 'price')
+                                    <div class="title-label"><center>Bokek meter</center></div>
+                                    <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+                                        <input type="text" id="price-range" name="price-range" value="" />
+                                    </div>
+                                @elseif (isset($searchMode) && $searchMode === 'location')
+                                    <div class="title-label"><center><i class="material-icons">place</i> Mager checkpoint</center></div>
+                                    <div class="panel-location mb-3" role="toolbar" aria-label="Toolbar with button groups">
+                                        <div id="user-location">Locating... (we need your location)</div> (<a id="change-user-location" href="#">Change</a>)
+                                        <input type="hidden" id="lat" name="lat" value="" />
+                                        <input type="hidden" id="lon" name="lon" value="" />
+                                    </div>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col s8 offset-s2 panel-location">
-                    <i class="material-icons">place</i> <div id="user-location">Locating... (we need your location)</div> (<a id="change-user-location" href="#">Change</a>)
+            </form>
+            @if (isset($searchMode) && $searchMode !== 'location')
+                <div class="row">
+                    <div class="col s8 offset-s2 panel-location">
+                        <i class="material-icons">place</i> <div id="user-location">Locating... (we need your location)</div> (<a id="change-user-location" href="#">Change</a>)
+                    </div>
                 </div>
-            </div>
+            @endif
         </div>
     </div>
 </div>

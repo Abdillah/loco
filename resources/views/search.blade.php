@@ -133,10 +133,14 @@
             var location = JSON.parse(localStorage.getItem('user.location'));
             if (location === null || location['state'] !== 'success') {
                 askLocationAndAddress().then(function(location) {
+                    $('#lat').val(location['lat']);
+                    $('#lon').val(location['lon']);
                     replaceUserLocation(location['lat'], location['lon']);
                     $('#user-location').text(location['addr']);
                 });
             } else {
+                $('#lat').val(location['lat']);
+                $('#lon').val(location['lon']);
                 replaceUserLocation(location['lat'], location['lon']);
                 $('#user-location').text(location['addr']);
             }
