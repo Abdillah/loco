@@ -60,7 +60,7 @@
                             @if (!isset($searchMode) || $searchMode === 'relevance')
                                 <div class="title-label"><center>Ngidam, gak bisa enggak!</center></div>
                                 <div>
-                                    <p><center>Saya mau yang persis sama</center></p>
+                                    <p><center>Saya mau yang persis sama dan paling recommended</center></p>
                                 </div>
                             @elseif (isset($searchMode) && $searchMode === 'price')
                                 <div class="title-label"><center>Bokek meter</center></div>
