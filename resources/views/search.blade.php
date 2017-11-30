@@ -103,11 +103,9 @@
                         ---><div class="items">
                                 <span class="item">{{ $foodstuff->name }}</span>
                                 <div class="rating">
-                                    <span class="star-icon full">☆</span>
-                                    <span class="star-icon full">☆</span>
-                                    <span class="star-icon full">☆</span>
-                                    <span class="star-icon half">☆</span>
-                                    <span class="star-icon">☆</span>
+                                    @for ($i=0; $i < $foodstuff->ratingStars; $i++)
+                                        <i class="material-icons">star</i>
+                                    @endfor
                                 </div>
                                 <p class="price" style="text-align: right">Rp {{ number_format($foodstuff->price, 2, ",", ".") }}</p>
                                 <p class="place" style="text-align: right">{{ $foodstuff->eatspot->name }}</p>

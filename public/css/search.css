@@ -91,24 +91,12 @@ body {
   font-size: 12px;
 }
 
-.star-icon.full:before {
+.rating i {
     color: #FDE16D;
-    content: '\2605'; /* Full star in UTF8 */
-    position: absolute;
-    left: 0;
     text-shadow: 0 0 2px rgba(0,0,0,0.7);
- }
- .star-icon {
-    color: #ddd;
     font-size: 20px;
     position: relative;
-}
-.star-icon.half:before {
-    color: #FDE16D;
-    content: '\2605'; /* Full star in UTF8 */
-    position: absolute;
-    left: 0;
-    width: 50%;
-    overflow: hidden;
-    text-shadow: 0 0 2px rgba(0,0,0,0.7);
+    top: 15px;
+    padding: 5px;
+    transform: scale(1.6);
 }
