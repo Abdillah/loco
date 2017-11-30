@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Search | Locohunter</title>
+    <title>Pencarian | Locohunter</title>
     <meta name="author" content="Locomotive Labs">
     <meta name="description" content="Locohunter food eatery">
     <!--Let browser know website is optimized for mobile-->
