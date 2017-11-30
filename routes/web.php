@@ -37,7 +37,14 @@ Route::get('/search', function (Request $request) {
         ->orderBy('price', 'ASC');
     } else if ($mode === 'relevance') {
         $queries = $queries->where('name', 'LIKE', "%$q%")
-        ->where('name', 'LIKE', "%$q%");
+        ->where('name', 'LIKE', "%$q%")
+        ->orderByRaw("CASE
+            WHEN rating = 'Very Recommended' then 1
+            WHEN rating = 'Most Recommended' then 2
+            WHEN rating = 'Recommended' then 3
+            WHEN rating = 'Good' then 4
+            ELSE 5 end, rating ASC"
+        );
     } else if ($mode === 'location') {
         $queries = $queries->where('price', '>', $priceRange[0])
         ->orWhere('price', '<', $priceRange[1]);
