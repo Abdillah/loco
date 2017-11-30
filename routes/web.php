@@ -48,8 +48,14 @@ Route::get('/search', function (Request $request) {
             ELSE 5 end, rating ASC"
         );
     } else if ($mode === 'location') {
-        $queries = $queries->where('price', '>', $priceRange[0])
-        ->orWhere('price', '<', $priceRange[1]);
+        if ($request->has('lat') && $request->has('lon')) {
+            $lat = $request->input('lat');
+            $lon = $request->input('lon');
+            $queries = $queries->with(['eatspot' => function ($query) {
+                $query->addSelect(DB::raw("*, (SQRT(POW(69.1 * (lat - ($lat)), 2) + POW(69.1 * ($lon - long) * COS(lat / 57.3), 2))) AS distance"));
+            }])
+            ->orderBy('id', 'distance');
+        }
     }
 
     $foods = $queries->getModels();
